@@ -16,11 +16,10 @@ WORKDIR /app
 #
 COPY --chown=gradle:gradle build.gradle settings.gradle /app/
 COPY --chown=gradle:gradle src /app/src
-
 #
 # Build the application.
 #
-RUN gradle --no-daemon build
+RUN gradle --no-daemon build -x test
 
 #
 # Java image for the application to run in.

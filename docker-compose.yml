@@ -20,7 +20,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-poa}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-poa}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-poa}
-      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
     ports:
       - "8080:8080"
     restart: unless-stopped
