@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-poa}
+      POSTGRES_USER: ${POSTGRES_USER:-poa}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-poa}
+    ports:
+      - "5432:5432"
+    volumes:
+      - poadb:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - poa-manager
+  backend:
+    build: ./backend
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-poa}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-poa}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-poa}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - poa-manager
+
+volumes:
+  poadb:
+networks:
+  poa-manager:
