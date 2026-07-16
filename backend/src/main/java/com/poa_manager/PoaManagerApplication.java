@@ -1,4 +1,4 @@
-package com.poa_manager.poa_manager;
+package com.poa_manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,12 +15,12 @@ public class PoaManagerApplication {
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
-	return new WebMvcConfigurer() {
-		@Override
-		public void addCorsMappings(CorsRegistry registry) {
-			registry.addMapping("/*").allowedOrigins("http://localhost:3000");
-		}
-	};
-}
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/*").allowedOrigins("http://localhost:3000");
+			}
+		};
+	}
 
 }

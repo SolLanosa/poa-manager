@@ -1,4 +1,4 @@
-package com.poa_manager.poa_manager;
+package com.poa_manager;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;

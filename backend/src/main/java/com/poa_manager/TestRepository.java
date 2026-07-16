@@ -1,4 +1,4 @@
-package com.poa_manager.poa_manager;
+package com.poa_manager;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
