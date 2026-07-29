@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "person")
 @Getter
@@ -24,4 +26,7 @@ public class Person {
 
     @Column(nullable = false, unique = true)
     private String nationalId;
+
+    @OneToMany(mappedBy = "person")
+    private List<CompanyMember> companies;
 }

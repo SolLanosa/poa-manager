@@ -26,4 +26,7 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     private List<PowerOfAttorney> powerOfAttorneys;
+
+    @OneToMany(mappedBy = "company")
+    private List<CompanyMember> companyMembers;
 }
