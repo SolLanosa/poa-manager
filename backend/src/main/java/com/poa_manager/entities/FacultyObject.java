@@ -1,4 +1,4 @@
-package com.poa_manager.entity;
+package com.poa_manager.entities;
 
 public enum FacultyObject {
     ACCOUNTING,

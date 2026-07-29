@@ -1,5 +1,5 @@
 package com.poa_manager.repositories;
-import com.poa_manager.entity.FacultyScopeItem;
+import com.poa_manager.entities.FacultyScopeItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FacultyScopeItemRepository extends JpaRepository<FacultyScopeItem, Long> {

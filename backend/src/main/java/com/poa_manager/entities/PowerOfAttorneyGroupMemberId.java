@@ -1,7 +1,7 @@
 // https://www.baeldung.com/jpa-many-to-many
 // https://www.baeldung.com/java-lombok-equalsandhashcode
 
-package com.poa_manager.entity;
+package com.poa_manager.entities;
 
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
