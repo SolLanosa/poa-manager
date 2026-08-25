@@ -11,16 +11,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PowerOfAttorneyGroupMember {
-    @EmbeddedId
-    private PowerOfAttorneyGroupMemberId id = new PowerOfAttorneyGroupMemberId();
+  @EmbeddedId
+  private PowerOfAttorneyGroupMemberId id = new PowerOfAttorneyGroupMemberId();
 
-    @ManyToOne
-    @MapsId("powerOfAttorneyGroupId")
-    @JoinColumn(name = "powerOfAttorneyGroupId", referencedColumnName = "id")
-    private PowerOfAttorneyGroup powerOfAttorneyGroup;
+  @ManyToOne
+  @MapsId("powerOfAttorneyGroupId")
+  @JoinColumn(name = "powerOfAttorneyGroupId", referencedColumnName = "id")
+  private PowerOfAttorneyGroup powerOfAttorneyGroup;
 
-    @ManyToOne
-    @MapsId("personId")
-    @JoinColumn(name = "personId", referencedColumnName = "id")
-    private Person person;
+  @ManyToOne
+  @MapsId("personId")
+  @JoinColumn(name = "personId", referencedColumnName = "id")
+  private Person person;
 }

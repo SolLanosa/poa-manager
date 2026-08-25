@@ -6,8 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class CompanyDTO {
-    private Long id;
-    private String name;
-    private String type;
+  private Long id;
+  private String name;
+  private String type;
 }
-

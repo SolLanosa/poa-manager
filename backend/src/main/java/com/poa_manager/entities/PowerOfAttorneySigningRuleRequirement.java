@@ -11,18 +11,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PowerOfAttorneySigningRuleRequirement {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "signingRuleId", referencedColumnName = "id")
-    private PowerOfAttorneySigningRule powerOfAttorneySigningRule;
+  @ManyToOne
+  @JoinColumn(name = "signingRuleId", referencedColumnName = "id")
+  private PowerOfAttorneySigningRule powerOfAttorneySigningRule;
 
-    @ManyToOne
-    @JoinColumn(name = "powerOfAttorneyGroupId", referencedColumnName = "id")
-    private PowerOfAttorneyGroup powerOfAttorneyGroup;
+  @ManyToOne
+  @JoinColumn(name = "powerOfAttorneyGroupId", referencedColumnName = "id")
+  private PowerOfAttorneyGroup powerOfAttorneyGroup;
 
-    @Column(nullable = false)
-    private int countRequired;
+  @Column(nullable = false)
+  private int countRequired;
 }

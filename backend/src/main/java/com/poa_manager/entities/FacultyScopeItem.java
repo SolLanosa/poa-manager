@@ -12,17 +12,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class FacultyScopeItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "facultyId", referencedColumnName = "id")
-    private PowerOfAttorneyFaculty faculty;
+  @ManyToOne
+  @JoinColumn(name = "facultyId", referencedColumnName = "id")
+  private PowerOfAttorneyFaculty faculty;
 
-    @Column(nullable = false)
-    private String externalRef;
+  @Column(nullable = false)
+  private String externalRef;
 
-    @Column(columnDefinition = "text")
-    private String label;
+  @Column(columnDefinition = "text")
+  private String label;
 }

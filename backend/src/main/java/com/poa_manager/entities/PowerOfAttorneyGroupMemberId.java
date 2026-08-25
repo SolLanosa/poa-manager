@@ -17,6 +17,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class PowerOfAttorneyGroupMemberId implements Serializable {
-    private Long powerOfAttorneyGroupId;
-    private Long personId;
+  private Long powerOfAttorneyGroupId;
+  private Long personId;
 }

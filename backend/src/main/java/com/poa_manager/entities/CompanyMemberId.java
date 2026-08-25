@@ -14,6 +14,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class CompanyMemberId implements Serializable {
-    private Long companyId;
-    private Long personId;
+  private Long companyId;
+  private Long personId;
 }

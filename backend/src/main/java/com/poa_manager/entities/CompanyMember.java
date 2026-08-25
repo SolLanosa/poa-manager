@@ -11,16 +11,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CompanyMember {
-    @EmbeddedId
-    private CompanyMemberId id = new CompanyMemberId();
+  @EmbeddedId
+  private CompanyMemberId id = new CompanyMemberId();
 
-    @ManyToOne
-    @MapsId("companyId")
-    @JoinColumn(name = "companyId", referencedColumnName = "id")
-    private Company company;
+  @ManyToOne
+  @MapsId("companyId")
+  @JoinColumn(name = "companyId", referencedColumnName = "id")
+  private Company company;
 
-    @ManyToOne
-    @MapsId("personId")
-    @JoinColumn(name = "personId", referencedColumnName = "id")
-    private Person person;
+  @ManyToOne
+  @MapsId("personId")
+  @JoinColumn(name = "personId", referencedColumnName = "id")
+  private Person person;
 }
