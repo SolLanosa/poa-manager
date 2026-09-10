@@ -9,5 +9,5 @@ export const useAuthorization = () => {
       return res.data;
     },
   });
-  return { ...mutation, decision: mutation.data };
+  return { ...mutation, decision: mutation.data, reset: mutation.reset };
 };

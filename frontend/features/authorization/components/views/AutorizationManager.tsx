@@ -14,12 +14,14 @@ export default function AuthorizationManager() {
   const { members, isLoading: isLoadingMembers } = useGetMembers(companyId!);
 
   const handleCompanyChange = (newVal: number | null) => {
-    setCompanyId(Number(newVal));
+    setCompanyId(newVal);
+    reset();
   };
 
-  const { mutate, decision, isPending } = useAuthorization();
+  const { mutate, decision, isPending, reset } = useAuthorization();
   const onClear = () => {
     setCompanyId(null);
+    reset();
   };
 
   return (

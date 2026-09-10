@@ -14,7 +14,7 @@ export default function Source({ decision }: { decision: DecisionDTO }) {
           <span className="font-bold">Faculty:</span> {decision.facultyId}
         </li>
         <li>
-          <span className="font-bold">Singature rule: </span>
+          <span className="font-bold">Signature rule: </span>
           {decision.signingRuleId}
         </li>
       </ul>
