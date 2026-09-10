@@ -8,35 +8,16 @@ import com.poa_manager.entities.PowerOfAttorneySigningRule;
 
 dialect "java"
 
-declare Approval
-  poaId: Long
-  facultyId: Long
-  ruleId: Long
-  signingRule: PowerOfAttorneySigningRule
-end
-
-
-rule "grant"
-salience 100
+rule "APPROVED"
 when
   $req: AuthorizationRequest()
+  $d: Decision()
   $poa: PowerOfAttorney(company.id == $req.getCompany().getId(), isActive($req.getDate()) == true)
   $fac: PowerOfAttorneyFaculty(powerOfAttorney.id == $poa.id, covers($req.getAction(), $req.getObject()) == true, coversItem($req.getItemRef()) == true)
   $sr: PowerOfAttorneySigningRule(powerOfAttorneyFaculty.id == $fac.id, amountFulfills($req.getAmount(), $req.getCurrency()) == true, isSignedBy($req.getSigners()) == true)
 then
-  insert(new Approval($poa.getId(), $fac.getId(), $sr.getId(), $sr));
-end
-
-
-rule "APPROVED"
-salience 50
-when
-  $d: Decision()
-  $a: Approval($ruleId: ruleId)
-  not Approval(ruleId > $ruleId)
-then
-  $d.approve($a.getPoaId(), $a.getFacultyId(), $a.getRuleId());
-  $d.addObservation("APPROVED", "Signed under power of attorney " + $a.getPoaId() + ", signing rule " + $a.getRuleId() + " requiring " + $a.getSigningRule().toString());
+  $d.approve($poa.getId(), $fac.getId(), $sr.getId());
+  $d.addObservation("APPROVED", "Signed under power of attorney " + $poa.getId() + ", signing rule " + $sr.getId() + ". Requiring " + $sr.toString());
 end
 
 
@@ -90,7 +71,7 @@ when
   $poa: PowerOfAttorney(company.id == $req.getCompany().getId(), isActive($req.getDate()) == true)
   $fac: PowerOfAttorneyFaculty(powerOfAttorney.id == $poa.id, covers($req.getAction(), $req.getObject()) == true, coversItem($req.getItemRef()) == true)
   exists PowerOfAttorneySigningRule(powerOfAttorneyFaculty.id == $fac.id, amountFulfills($req.getAmount(), $req.getCurrency()) == true)
-  not Approval()
+  not ($p2: PowerOfAttorney(company.id == $req.getCompany().getId(), isActive($req.getDate()) == true) and $f2: PowerOfAttorneyFaculty(powerOfAttorney.id == $p2.id, covers($req.getAction(), $req.getObject()) == true, coversItem($req.getItemRef()) == true) and PowerOfAttorneySigningRule(powerOfAttorneyFaculty.id == $f2.id, amountFulfills($req.getAmount(), $req.getCurrency()) == true, isSignedBy($req.getSigners()) == true))
 then
   $d.addObservation("INSUFFICIENT_SIGNATURES", "A signing rule for action: " + $req.getAction() + ", object: " + $req.getObject() + " " + ($req.getItemRef() == null ? "" : $req.getItemRef()) + ", amount: " + $req.getAmount() + " exists but the signers do not meet any signing rule of the granted faculty.\n" + "Required signatures: \n" + $fac.printSigningRules($req.getAmount(), $req.getCurrency()));
 end
