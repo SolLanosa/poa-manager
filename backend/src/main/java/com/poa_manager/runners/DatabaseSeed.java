@@ -96,7 +96,7 @@ public class DatabaseSeed implements CommandLineRunner {
     Person cabrera = savePerson("Diego Alejandro", "Cabrera", "25234587");
     saveCompanyMember(aurora, cabrera);
 
-    PowerOfAttorney bankingPOA = savePoa(aurora,
+    PowerOfAttorney bankingPOA = savePoa(aurora, "POA-112/2024", "Poder bancario general",
         toDate(2024, 11, 14), toDate(2024, 12, 9), toDate(2027, 12, 31),
         toDate(2026, 6, 17));
 
@@ -114,7 +114,7 @@ public class DatabaseSeed implements CommandLineRunner {
           bankingGroupD);
     }
 
-    PowerOfAttorney adminPOA = savePoa(aurora,
+    PowerOfAttorney adminPOA = savePoa(aurora, "POA-112/2024", "Poder de administración",
         toDate(2024, 11, 14), toDate(2024, 12, 9), toDate(2028, 6, 30), null);
 
     PowerOfAttorneyGroup adminGroupA = saveGroup(adminPOA, "Group A");
@@ -149,7 +149,8 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(t, null, new BigDecimal("1000000.00"), USD, adminGroupC);
     }
 
-    PowerOfAttorney filingsPOA = savePoa(aurora,
+    PowerOfAttorney filingsPOA = savePoa(aurora, "POA-112/2024",
+        "Poder para trámites impositivos y registrales",
         toDate(2024, 11, 14), toDate(2025, 1, 20), toDate(2027, 12, 31), null);
     PowerOfAttorneyGroup filingsGroup = saveGroup(filingsPOA, "Apoderados");
     saveMembers(filingsGroup, nunez, guzman);
@@ -157,7 +158,7 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, filingsGroup);
     }
 
-    PowerOfAttorney customsPOA = savePoa(aurora,
+    PowerOfAttorney customsPOA = savePoa(aurora, "POA-112/2024", "Poder aduanero",
         toDate(2024, 11, 14), toDate(2025, 1, 20), toDate(2027, 12, 31), null);
     PowerOfAttorneyGroup customsGroup = saveGroup(customsPOA, "Apoderados");
     saveMembers(customsGroup, nunez, dominguez);
@@ -165,7 +166,7 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, customsGroup);
     }
 
-    PowerOfAttorney laborPOA = savePoa(aurora,
+    PowerOfAttorney laborPOA = savePoa(aurora, "POA-112/2024", "Poder laboral y de seguridad social",
         toDate(2024, 11, 14), toDate(2025, 2, 18), toDate(2027, 12, 31), null);
     PowerOfAttorneyGroup laborGroup = saveGroup(laborPOA, "Apoderados");
     saveMembers(laborGroup, cabrera, nunez);
@@ -173,7 +174,8 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, laborGroup);
     }
 
-    PowerOfAttorney restrictedPOA = savePoa(aurora,
+    PowerOfAttorney restrictedPOA = savePoa(aurora, "POA-151/2026",
+        "Poder bancario restringido a cuentas designadas",
         toDate(2026, 7, 20), toDate(2026, 8, 12), toDate(2028, 6, 30), null);
     PowerOfAttorneyGroup restrictedGroupA = saveGroup(restrictedPOA, "Group A");
     PowerOfAttorneyGroup restrictedGroupB = saveGroup(restrictedPOA, "Group B");
@@ -212,7 +214,7 @@ public class DatabaseSeed implements CommandLineRunner {
     Person correa = savePerson("Fernando Ariel", "Correa", "25109876");
     saveCompanyMember(delta, correa);
 
-    PowerOfAttorney bankingPOA = savePoa(delta,
+    PowerOfAttorney bankingPOA = savePoa(delta, "POA-74/2025", "Poder bancario general",
         toDate(2025, 3, 3), toDate(2025, 3, 28), toDate(2026, 12, 31), null);
 
     PowerOfAttorneyGroup bankingGroupA = saveGroup(bankingPOA, "Group A");
@@ -233,7 +235,7 @@ public class DatabaseSeed implements CommandLineRunner {
         "Pago de tributos hasta USD300000");
     saveRule(taxPay, null, new BigDecimal("300000.00"), USD, bankingGroupC, bankingGroupD);
 
-    PowerOfAttorney adminPOA = savePoa(delta,
+    PowerOfAttorney adminPOA = savePoa(delta, "POA-74/2025", "Poder de administración",
         toDate(2025, 3, 3), toDate(2025, 3, 28), toDate(2027, 12, 31), null);
 
     PowerOfAttorneyGroup adminGroupA = saveGroup(adminPOA, "Group A");
@@ -265,7 +267,8 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(wh, null, null, USD, adminGroupB, adminGroupC);
     }
 
-    PowerOfAttorney filingsPOA = savePoa(delta,
+    PowerOfAttorney filingsPOA = savePoa(delta, "POA-74/2025",
+        "Poder para trámites impositivos y registrales",
         toDate(2025, 3, 3), toDate(2025, 4, 15), toDate(2027, 12, 31), null);
     PowerOfAttorneyGroup filingsGroup = saveGroup(filingsPOA, "Apoderados");
     saveMembers(filingsGroup, aguirre, paz);
@@ -273,7 +276,8 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, filingsGroup);
     }
 
-    PowerOfAttorney customsPOA = savePoa(delta, toDate(2025, 3, 3), toDate(2025, 4, 15),
+    PowerOfAttorney customsPOA = savePoa(delta, "POA-74/2025", "Poder aduanero",
+        toDate(2025, 3, 3), toDate(2025, 4, 15),
         toDate(2027, 12, 31),
         null);
     PowerOfAttorneyGroup customsGroup = saveGroup(customsPOA, "Apoderados");
@@ -282,7 +286,8 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, customsGroup);
     }
 
-    PowerOfAttorney laborPOA = savePoa(delta, toDate(2025, 3, 3), toDate(2025, 5, 7), toDate(2027, 12, 31),
+    PowerOfAttorney laborPOA = savePoa(delta, "POA-74/2025", "Poder laboral y de seguridad social",
+        toDate(2025, 3, 3), toDate(2025, 5, 7), toDate(2027, 12, 31),
         null);
     PowerOfAttorneyGroup laborGroup = saveGroup(laborPOA, "Apoderados");
     saveMembers(laborGroup, correa, aguirre);
@@ -290,7 +295,9 @@ public class DatabaseSeed implements CommandLineRunner {
       saveRule(f, null, null, USD, laborGroup);
     }
 
-    PowerOfAttorney transportPOA = savePoa(delta, toDate(2026, 2, 11), toDate(2026, 3, 5),
+    PowerOfAttorney transportPOA = savePoa(delta, "POA-89/2026",
+        "Poder para gestión de transporte y logística",
+        toDate(2026, 2, 11), toDate(2026, 3, 5),
         toDate(2028, 12, 31),
         null);
     PowerOfAttorneyGroup transportGroup = saveGroup(transportPOA, "Apoderados");
@@ -663,10 +670,12 @@ public class DatabaseSeed implements CommandLineRunner {
     return companyMemberRepo.save(companyMember);
   }
 
-  private PowerOfAttorney savePoa(Company company, LocalDate granted, LocalDate from, LocalDate until,
-      LocalDate revoked) {
+  private PowerOfAttorney savePoa(Company company, String reference, String description, LocalDate granted,
+      LocalDate from, LocalDate until, LocalDate revoked) {
     PowerOfAttorney powerOfAttorney = new PowerOfAttorney();
     powerOfAttorney.setCompany(company);
+    powerOfAttorney.setReference(reference);
+    powerOfAttorney.setDescription(description);
     powerOfAttorney.setGrantedOn(granted.atStartOfDay());
     powerOfAttorney.setValidFrom(from.atStartOfDay());
     powerOfAttorney.setValidUntil(until.atStartOfDay());

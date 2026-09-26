@@ -78,8 +78,8 @@ public class AuthorizationControllerTest {
   @Test
   void isResponseOkWithApprovedDecision() {
     Decision decision = new Decision();
-    decision.approve(1L, 1L, 1L);
-    decision.addObservation("APPROVED", "Signed under power of attorney 100");
+    decision.approve("Banking", "Faculty", "Rule");
+    decision.addObservation("APPROVED", "");
 
     Mockito.when(authorizationService.authorize(ArgumentMatchers.any(AuthorizationRequestDTO.class)))
         .thenReturn(decision);
@@ -90,9 +90,9 @@ public class AuthorizationControllerTest {
 
     DecisionDTO body = (DecisionDTO) response.getBody();
     assertTrue(body.isApproved());
-    assertEquals(1L, body.getPowerOfAttorneyId());
-    assertEquals(1L, body.getFacultyId());
-    assertEquals(1L, body.getSigningRuleId());
+    assertEquals("Banking", body.getPowerOfAttorney());
+    assertEquals("Faculty", body.getFaculty());
+    assertEquals("Rule", body.getSigningRule());
     assertEquals(1, body.getObservations().size());
     assertEquals("APPROVED", body.getObservations().get(0).getCode());
   }
@@ -112,9 +112,9 @@ public class AuthorizationControllerTest {
 
     DecisionDTO body = (DecisionDTO) response.getBody();
     assertFalse(body.isApproved());
-    assertNull(body.getPowerOfAttorneyId());
-    assertNull(body.getFacultyId());
-    assertNull(body.getSigningRuleId());
+    assertNull(body.getPowerOfAttorney());
+    assertNull(body.getFaculty());
+    assertNull(body.getSigningRule());
     assertEquals(1, body.getObservations().size());
     assertEquals("NO_FACULTY", body.getObservations().get(0).getCode());
     assertEquals("No power of attorney in force grants PAY on TAX_OBLIGATION",

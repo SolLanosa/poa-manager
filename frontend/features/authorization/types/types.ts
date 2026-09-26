@@ -18,9 +18,9 @@ export type ObservationDTO = {
 
 export type DecisionDTO = {
   approved: boolean;
-  powerOfAttorneyId: number | null;
-  facultyId: number | null;
-  signingRuleId: number | null;
+  powerOfAttorney: string | null;
+  faculty: string | null;
+  signingRule: string | null;
   observations: ObservationDTO[];
 };
 

@@ -17,9 +17,9 @@ public class DecisionDTO {
   }
 
   private boolean approved;
-  private Long powerOfAttorneyId;
-  private Long facultyId;
-  private Long signingRuleId;
+  private String powerOfAttorney;
+  private String faculty;
+  private String signingRule;
   private List<ObservationDTO> observations;
 
 }

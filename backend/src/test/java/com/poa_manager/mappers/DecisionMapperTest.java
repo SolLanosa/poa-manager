@@ -10,15 +10,15 @@ public class DecisionMapperTest {
   @Test
   void correctlyMapsDecision() {
     Decision decision = new Decision();
-    decision.approve(1L, 2L, 3L);
-    decision.addObservation("APPROVED", "Signed under power of attorney 1, 3 signing rule");
+    decision.approve("Banking", "Faculty", "Rule");
+    decision.addObservation("APPROVED", "");
 
     DecisionDTO dto = DecisionMapper.toDTO(decision);
 
-    assertEquals(1L, dto.getPowerOfAttorneyId());
-    assertEquals(2L, dto.getFacultyId());
-    assertEquals(3L, dto.getSigningRuleId());
+    assertEquals("Banking", dto.getPowerOfAttorney());
+    assertEquals("Faculty", dto.getFaculty());
+    assertEquals("Rule", dto.getSigningRule());
     assertEquals("APPROVED", dto.getObservations().get(0).getCode());
-    assertEquals("Signed under power of attorney 1, 3 signing rule", dto.getObservations().get((0)).getMessage());
+    assertEquals("", dto.getObservations().get((0)).getMessage());
   }
 }

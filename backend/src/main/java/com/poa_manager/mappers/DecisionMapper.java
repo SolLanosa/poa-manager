@@ -6,9 +6,9 @@ import com.poa_manager.entities.Decision;
 public class DecisionMapper {
   public static DecisionDTO toDTO(Decision decision) {
     return new DecisionDTO(decision.isApproved(),
-        decision.getPowerOfAttorneyId().orElse(null),
-        decision.getFacultyId().orElse(null),
-        decision.getSigningRuleId().orElse(null),
+        decision.getPowerOfAttorney().orElse(null),
+        decision.getFaculty().orElse(null),
+        decision.getSigningRule().orElse(null),
         decision.getObservations().stream().map(DecisionMapper::toDTO).toList());
   }
 

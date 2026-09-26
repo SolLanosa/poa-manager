@@ -34,6 +34,12 @@ public class PowerOfAttorney {
   @Column
   LocalDateTime revokedEffective;
 
+  @Column
+  String reference;
+
+  @Column
+  String description;
+
   @OneToMany(mappedBy = "powerOfAttorney")
   private List<PowerOfAttorneyGroup> powerOfAttorneyGroups;
 
@@ -50,5 +56,9 @@ public class PowerOfAttorney {
     if (revokedEffective != null && !when.isBefore(revokedEffective))
       return false;
     return true;
+  }
+
+  public String toString() {
+    return description + " (" + reference + ")";
   }
 }

@@ -10,16 +10,16 @@ public class Decision {
   }
 
   private boolean approved;
-  private Optional<Long> powerOfAttorneyId = Optional.empty();
-  private Optional<Long> facultyId = Optional.empty();
-  private Optional<Long> signingRuleId = Optional.empty();
+  private Optional<String> powerOfAttorney = Optional.empty();
+  private Optional<String> faculty = Optional.empty();
+  private Optional<String> signingRule = Optional.empty();
   private List<Observation> observations = new ArrayList<>();
 
-  public void approve(Long powerOfAttorneyId, Long facultyId, Long signingRuleId) {
+  public void approve(String powerOfAttorney, String faculty, String signingRule) {
     this.approved = true;
-    this.powerOfAttorneyId = Optional.of(powerOfAttorneyId);
-    this.facultyId = Optional.of(facultyId);
-    this.signingRuleId = Optional.of(signingRuleId);
+    this.powerOfAttorney = Optional.of(powerOfAttorney);
+    this.faculty = Optional.of(faculty);
+    this.signingRule = Optional.of(signingRule);
   }
 
   public void addObservation(String code, String message) {
@@ -34,28 +34,28 @@ public class Decision {
     this.approved = approved;
   }
 
-  public Optional<Long> getPowerOfAttorneyId() {
-    return powerOfAttorneyId;
+  public Optional<String> getPowerOfAttorney() {
+    return powerOfAttorney;
   }
 
-  public void setPowerOfAttorneyId(Optional<Long> powerOfAttorneyId) {
-    this.powerOfAttorneyId = powerOfAttorneyId;
+  public void setPowerOfAttorney(Optional<String> powerOfAttorney) {
+    this.powerOfAttorney = powerOfAttorney;
   }
 
-  public Optional<Long> getFacultyId() {
-    return facultyId;
+  public Optional<String> getFaculty() {
+    return faculty;
   }
 
-  public void setFacultyId(Optional<Long> facultyId) {
-    this.facultyId = facultyId;
+  public void setFaculty(Optional<String> faculty) {
+    this.faculty = faculty;
   }
 
-  public Optional<Long> getSigningRuleId() {
-    return signingRuleId;
+  public Optional<String> getSigningRule() {
+    return signingRule;
   }
 
-  public void setSigningRuleId(Optional<Long> signingRuleId) {
-    this.signingRuleId = signingRuleId;
+  public void setSigningRule(Optional<String> signingRule) {
+    this.signingRule = signingRule;
   }
 
   public List<Observation> getObservations() {

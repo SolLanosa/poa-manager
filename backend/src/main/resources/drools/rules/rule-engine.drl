@@ -16,8 +16,8 @@ when
   $fac: PowerOfAttorneyFaculty(powerOfAttorney.id == $poa.id, covers($req.getAction(), $req.getObject()) == true, coversItem($req.getItemRef()) == true)
   $sr: PowerOfAttorneySigningRule(powerOfAttorneyFaculty.id == $fac.id, amountFulfills($req.getAmount(), $req.getCurrency()) == true, isSignedBy($req.getSigners()) == true)
 then
-  $d.approve($poa.getId(), $fac.getId(), $sr.getId());
-  $d.addObservation("APPROVED", "Signed under power of attorney " + $poa.getId() + ", signing rule " + $sr.getId() + ". Requiring " + $sr.toString());
+  $d.approve($poa.toString(), $fac.getDescription(), $sr.toString());
+  $d.addObservation("APPROVED", "");
 end
 
 
