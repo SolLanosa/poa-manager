@@ -49,7 +49,7 @@ when
   exists ($p1: PowerOfAttorney(company.id == $req.getCompany().getId(), isActive($req.getDate()) == true) and PowerOfAttorneyFaculty(powerOfAttorney.id == $p1.id, covers($req.getAction(), $req.getObject()) == true ))
   not ($p2: PowerOfAttorney(company.id == $req.getCompany().getId(), isActive($req.getDate()) == true) and PowerOfAttorneyFaculty(powerOfAttorney.id == $p2.id, covers($req.getAction(), $req.getObject()) == true, coversItem($req.getItemRef()) == true ))
 then
-  $d.addObservation("OUT_OF_SCOPE", "The faculty is granted but is limited to items that do not include " + $req.getItemRef());
+  $d.addObservation("OUT_OF_SCOPE", "The faculty is granted but is limited to items that do not include " + ($req.getItemRef() == null || $req.getItemRef().isEmpty()? "<empty>" : $req.getItemRef()));
 end
 
 
